@@ -5,6 +5,7 @@ site_url: https://ralph367.github.io/mkdocs-test/
 
 repo_name: ralph367/mkdocs-test
 repo_url: https://github.com/ralph367/mkdocs-test
+branch: main
 
 theme:
   name: material
