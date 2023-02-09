@@ -1,5 +1,6 @@
 site_name: My Docs
 theme:
   name: material
+  favicon: assets/stell-logo-white.svg
   features:
     - navigation.tabs
