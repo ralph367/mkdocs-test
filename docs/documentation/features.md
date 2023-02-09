@@ -139,7 +139,7 @@ Can be used for note, tip, warning, success
     
 ## Highlights Code Line
 
-```
+```` markdown title="Code block with highlighted lines"
 ``` py hl_lines="2 3"
 def bubble_sort(items):
     for i in range(len(items)):
@@ -147,7 +147,9 @@ def bubble_sort(items):
             if items[j] > items[j + 1]:
                 items[j], items[j + 1] = items[j + 1], items[j]
 ```
-```
+````
+
+<div class="result" markdown>
 
 ``` py linenums="1" hl_lines="2 3"
 def bubble_sort(items):
@@ -156,6 +158,8 @@ def bubble_sort(items):
             if items[j] > items[j + 1]:
                 items[j], items[j + 1] = items[j + 1], items[j]
 ```
+
+</div>
 
 
 ## Grouping Content
