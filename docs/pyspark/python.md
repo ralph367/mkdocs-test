@@ -740,7 +740,7 @@ please see details in [Foundry documentation](https://bole.palantirfoundry.fr/wo
 Partition is the elementary entity on which Spark can execute computation. **Spark cannot parallelize computation inside one partition**(you need at leaset 2 partitions). The process of tuning number of dataset partitions is called “partitioning” or “re-partitioning.” 
 > As a general rule, you should aim for a ratio of approximately one partition for every **128MB** of your dataset.
 
-```python
+````python
 # bad
 @transform_df(
     Output("Users/data/output"),
@@ -760,7 +760,7 @@ def my_compute_function(df):
     # calculate number of partitions following the rule mentioned above, sometimes you might want call df.coalesce
     return df.repartition(calculated_number)   
 
-```
+````
 ---
 ## Other Considerations and Recommendations
 
