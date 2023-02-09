@@ -31,9 +31,8 @@ search:
 
 ## Warning
 
-WARNING:
-Using absolute paths with links is not officially supported. Relative paths
-are adjusted by MkDocs to ensure they are always relative to the page. Absolute
-paths are not modified at all. This means that your links using absolute paths
-might work fine in your local environment but they might break once you deploy
-them to your production server.
+!!! tip "Automatically bundle Google Fonts"
+
+    The [built-in privacy plugin] makes it easy to use Google Fonts
+    while complying with the __General Data Protection Regulation__ (GDPR),
+    by automatically downloading and self-hosting the web font files.
