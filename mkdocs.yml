@@ -1,7 +1,19 @@
-site_name: My Docs
+site_name: Documentation
+site_url: https://ralph367.github.io/mkdocs-test/
+
+
+
+repo_name: ralph367/mkdocs-test
+repo_url: https://github.com/ralph367/mkdocs-test
+
 theme:
   name: material
   favicon: assets/stell-logo-white.svg
   logo: assets/stell-logo-white.svg
   features:
     - navigation.tabs
+    
+    - content.action.edit
+    - content.action.view
+    - content.code.annotate
+    - content.code.copy
