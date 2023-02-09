@@ -18,3 +18,8 @@ theme:
     - content.action.view
     - content.code.annotate
     - content.code.copy
+
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
