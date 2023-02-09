@@ -40,4 +40,16 @@ Follow this structure and the top and side bars will be automatically updated. H
 So consider it as a normal folder and files. The inital folder will be added as a top navigation item and everything inside this folder will be in the side navigation bar, where you can also create another folder and you will have dropdown in the sidebar.
 
 
+## Navigation
 
+The nav configuration setting in your mkdocs.yml file defines which pages are included in the global site navigation menu as well as the structure of that menu. If not provided, the navigation will be automatically created by discovering all the Markdown files in the documentation directory. An automatically created navigation configuration will always be sorted alphanumerically by file name (except that index files will always be listed first within a sub-section). You will need to manually define your navigation configuration if you would like your navigation menu sorted differently. To change the file order, edit the `mkdocs.yml` file by adding this code
+```
+nav:
+    - Home: 'index.md'
+    - 'User Guide':
+        - 'Writing your docs': 'writing-your-docs.md'
+        - 'Styling your docs': 'styling-your-docs.md'
+    - About:
+        - 'License': 'license.md'
+        - 'Release Notes': 'release-notes.md'
+```
