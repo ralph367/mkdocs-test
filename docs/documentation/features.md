@@ -149,7 +149,7 @@ def bubble_sort(items):
 ```
 ````
 
-<div class="result" markdown>
+
 
 ``` py linenums="1" hl_lines="2 3"
 def bubble_sort(items):
@@ -159,7 +159,6 @@ def bubble_sort(items):
                 items[j], items[j + 1] = items[j + 1], items[j]
 ```
 
-</div>
 
 
 ## Grouping Content
