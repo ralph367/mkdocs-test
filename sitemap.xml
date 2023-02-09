@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+    <url>
+         <loc>https://ralph367.github.io/mkdocs-test/</loc>
+         <lastmod>2023-02-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ralph367.github.io/mkdocs-test/documentation/basic/</loc>
+         <lastmod>2023-02-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ralph367.github.io/mkdocs-test/documentation/features/</loc>
+         <lastmod>2023-02-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ralph367.github.io/mkdocs-test/pyspark/python/</loc>
+         <lastmod>2023-02-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ralph367.github.io/mkdocs-test/pyspark/spark/</loc>
+         <lastmod>2023-02-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://ralph367.github.io/mkdocs-test/pyspark/examples/first/</loc>
+         <lastmod>2023-02-09</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+</urlset>

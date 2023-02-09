@@ -1,0 +1,1884 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+        <link rel="canonical" href="https://ralph367.github.io/mkdocs-test/pyspark/python/">
+      
+      
+        <link rel="prev" href="../../documentation/features/">
+      
+      
+        <link rel="next" href="../spark/">
+      
+      <link rel="icon" href="../../assets/stell-logo-white.svg">
+      <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.0.11">
+    
+    
+      
+        <title>PySpark Style Guide (Preview) - Documentation</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0d440cfe.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.2505c338.min.css">
+      
+      
+
+    
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#pyspark-style-guide-preview" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Documentation" class="md-header__button md-logo" aria-label="Documentation" data-md-component="logo">
+      
+  <img src="../../assets/stell-logo-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Documentation
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              PySpark Style Guide (Preview)
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ralph367/mkdocs-test" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ralph367/mkdocs-test
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-tabs__inner md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+
+
+  <li class="md-tabs__item">
+    <a href="../.." class="md-tabs__link">
+      Home
+    </a>
+  </li>
+
+      
+        
+  
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../documentation/basic/" class="md-tabs__link">
+        Documentation
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+    
+  
+
+
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="./" class="md-tabs__link md-tabs__link--active">
+        Pyspark
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Documentation" class="md-nav__button md-logo" aria-label="Documentation" data-md-component="logo">
+      
+  <img src="../../assets/stell-logo-white.svg" alt="logo">
+
+    </a>
+    Documentation
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ralph367/mkdocs-test" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    ralph367/mkdocs-test
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        Home
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
+          Documentation
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_2">
+          <span class="md-nav__icon md-icon"></span>
+          Documentation
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/basic/" class="md-nav__link">
+        Basic Information
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../documentation/features/" class="md-nav__link">
+        Features
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+          Pyspark
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <label class="md-nav__title" for="__nav_3">
+          <span class="md-nav__icon md-icon"></span>
+          Pyspark
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          PySpark Style Guide (Preview)
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        PySpark Style Guide (Preview)
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+    <nav class="md-nav" aria-label="General">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easy-to-read-consistent-explicit" class="md-nav__link">
+    Easy to read, consistent, explicit
+  </a>
+  
+    <nav class="md-nav" aria-label="Easy to read, consistent, explicit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imports" class="md-nav__link">
+    Imports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-descriptive-names-for-dataframes" class="md-nav__link">
+    Use descriptive names for dataframes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-column-name-strings-to-access-columns" class="md-nav__link">
+    Use column name strings to access columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-a-function-accepts-a-column-or-column-name-use-the-column-name-option" class="md-nav__link">
+    When a function accepts a column or column name, use the column name option
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-the-output-of-a-function-is-stored-as-a-column-give-the-column-a-concise-name" class="md-nav__link">
+    When the output of a function is stored as a column, give the column a concise name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empty-columns" class="md-nav__link">
+    Empty columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-comments" class="md-nav__link">
+    Using comments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operations" class="md-nav__link">
+    Logical operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Logical operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#refactor-complex-logical-operations" class="md-nav__link">
+    Refactor complex logical operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factor-out-common-logic" class="md-nav__link">
+    Factor out common logic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-select-and-withcolumn" class="md-nav__link">
+    About select() and withColumn()
+  </a>
+  
+    <nav class="md-nav" aria-label="About select() and withColumn()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-select-statements-to-specify-a-schema-contract" class="md-nav__link">
+    Use select statements to specify a schema contract
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instead-of-using-withcolumn-to-redefine-type-cast-in-the-select" class="md-nav__link">
+    Instead of using withColumn() to redefine type, cast in the select:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joins" class="md-nav__link">
+    Joins
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#be-careful-with-joins" class="md-nav__link">
+    Be careful with joins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicitly-specifying-how" class="md-nav__link">
+    Explicitly specifying how
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-left_outer-instead-of-left" class="md-nav__link">
+    Use left_outer instead of left
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-right_outer-joins" class="md-nav__link">
+    Avoid right_outer joins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-renaming-all-columns-to-avoid-collisions" class="md-nav__link">
+    Avoid renaming all columns to avoid collisions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-use-dropduplicates-or-distinct-as-a-crutch" class="md-nav__link">
+    Don't use .dropDuplicates() or .distinct() as a crutch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-functions" class="md-nav__link">
+    Window Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Window Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefer-use-of-window-functions-to-equivalent-re-joining-operations" class="md-nav__link">
+    Prefer use of window functions to equivalent re-joining operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-empty-partitionby" class="md-nav__link">
+    Avoid empty partitionBy()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udfs-user-defined-functions" class="md-nav__link">
+    UDFs (user defined functions)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chaining-of-expressions" class="md-nav__link">
+    Chaining of expressions
+  </a>
+  
+    <nav class="md-nav" aria-label="Chaining of expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoid-chaining-of-expressions-into-multi-line-expressions-with-different-types" class="md-nav__link">
+    Avoid chaining of expressions into multi-line expressions with different types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-line-expressions" class="md-nav__link">
+    Multi-line expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-chaining-several-functions-open-a-cleanly-indentable-block-using-parentheses" class="md-nav__link">
+    When chaining several functions, open a cleanly indentable block using parentheses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-to-break-the-query-into-reasonably-sized-named-chunks" class="md-nav__link">
+    Try to break the query into reasonably sized named chunks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foundry-specific" class="md-nav__link">
+    Foundry specific
+  </a>
+  
+    <nav class="md-nav" aria-label="Foundry specific">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dont-repeat-yourself" class="md-nav__link">
+    Don't repeat yourself
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-check-and-expectations-to-explicit-explain-expected-output-and-input" class="md-nav__link">
+    Use Check and expectations to explicit explain expected Output and Input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-require_incrementaltrue-if-you-are-expecting-an-incremental-build" class="md-nav__link">
+    Add require_incremental=True if you are expecting an incremental build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-through-repartitioning" class="md-nav__link">
+    Optimization through (Re)partitioning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-considerations-and-recommendations" class="md-nav__link">
+    Other Considerations and Recommendations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    Contributing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../spark/" class="md-nav__link">
+        Spark
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+      
+      
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+      
+      
+      
+        <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          Examples
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+        <label class="md-nav__title" for="__nav_3_3">
+          <span class="md-nav__icon md-icon"></span>
+          Examples
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../examples/first/" class="md-nav__link">
+        First example
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    Introduction
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#general" class="md-nav__link">
+    General
+  </a>
+  
+    <nav class="md-nav" aria-label="General">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#easy-to-read-consistent-explicit" class="md-nav__link">
+    Easy to read, consistent, explicit
+  </a>
+  
+    <nav class="md-nav" aria-label="Easy to read, consistent, explicit">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#imports" class="md-nav__link">
+    Imports
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-descriptive-names-for-dataframes" class="md-nav__link">
+    Use descriptive names for dataframes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-column-name-strings-to-access-columns" class="md-nav__link">
+    Use column name strings to access columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-a-function-accepts-a-column-or-column-name-use-the-column-name-option" class="md-nav__link">
+    When a function accepts a column or column name, use the column name option
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-the-output-of-a-function-is-stored-as-a-column-give-the-column-a-concise-name" class="md-nav__link">
+    When the output of a function is stored as a column, give the column a concise name
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#empty-columns" class="md-nav__link">
+    Empty columns
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#using-comments" class="md-nav__link">
+    Using comments
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#logical-operations" class="md-nav__link">
+    Logical operations
+  </a>
+  
+    <nav class="md-nav" aria-label="Logical operations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#refactor-complex-logical-operations" class="md-nav__link">
+    Refactor complex logical operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#factor-out-common-logic" class="md-nav__link">
+    Factor out common logic
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#about-select-and-withcolumn" class="md-nav__link">
+    About select() and withColumn()
+  </a>
+  
+    <nav class="md-nav" aria-label="About select() and withColumn()">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-select-statements-to-specify-a-schema-contract" class="md-nav__link">
+    Use select statements to specify a schema contract
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#instead-of-using-withcolumn-to-redefine-type-cast-in-the-select" class="md-nav__link">
+    Instead of using withColumn() to redefine type, cast in the select:
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#joins" class="md-nav__link">
+    Joins
+  </a>
+  
+    <nav class="md-nav" aria-label="Joins">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#be-careful-with-joins" class="md-nav__link">
+    Be careful with joins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#explicitly-specifying-how" class="md-nav__link">
+    Explicitly specifying how
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-left_outer-instead-of-left" class="md-nav__link">
+    Use left_outer instead of left
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-right_outer-joins" class="md-nav__link">
+    Avoid right_outer joins
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-renaming-all-columns-to-avoid-collisions" class="md-nav__link">
+    Avoid renaming all columns to avoid collisions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dont-use-dropduplicates-or-distinct-as-a-crutch" class="md-nav__link">
+    Don't use .dropDuplicates() or .distinct() as a crutch
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#window-functions" class="md-nav__link">
+    Window Functions
+  </a>
+  
+    <nav class="md-nav" aria-label="Window Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prefer-use-of-window-functions-to-equivalent-re-joining-operations" class="md-nav__link">
+    Prefer use of window functions to equivalent re-joining operations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#avoid-empty-partitionby" class="md-nav__link">
+    Avoid empty partitionBy()
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#udfs-user-defined-functions" class="md-nav__link">
+    UDFs (user defined functions)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#chaining-of-expressions" class="md-nav__link">
+    Chaining of expressions
+  </a>
+  
+    <nav class="md-nav" aria-label="Chaining of expressions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#avoid-chaining-of-expressions-into-multi-line-expressions-with-different-types" class="md-nav__link">
+    Avoid chaining of expressions into multi-line expressions with different types
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#multi-line-expressions" class="md-nav__link">
+    Multi-line expressions
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-chaining-several-functions-open-a-cleanly-indentable-block-using-parentheses" class="md-nav__link">
+    When chaining several functions, open a cleanly indentable block using parentheses
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#try-to-break-the-query-into-reasonably-sized-named-chunks" class="md-nav__link">
+    Try to break the query into reasonably sized named chunks
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#foundry-specific" class="md-nav__link">
+    Foundry specific
+  </a>
+  
+    <nav class="md-nav" aria-label="Foundry specific">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dont-repeat-yourself" class="md-nav__link">
+    Don't repeat yourself
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-check-and-expectations-to-explicit-explain-expected-output-and-input" class="md-nav__link">
+    Use Check and expectations to explicit explain expected Output and Input
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#add-require_incrementaltrue-if-you-are-expecting-an-incremental-build" class="md-nav__link">
+    Add require_incremental=True if you are expecting an incremental build
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimization-through-repartitioning" class="md-nav__link">
+    Optimization through (Re)partitioning
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#other-considerations-and-recommendations" class="md-nav__link">
+    Other Considerations and Recommendations
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#contributing" class="md-nav__link">
+    Contributing
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/ralph367/mkdocs-test/edit/master/docs/pyspark/python.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4v-2m10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1 2.1 2.1Z"/></svg>
+    </a>
+  
+  
+    
+      
+    
+    <a href="https://github.com/ralph367/mkdocs-test/raw/master/docs/pyspark/python.md" title="View source of this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 18c.56 0 1 .44 1 1s-.44 1-1 1-1-.44-1-1 .44-1 1-1m0-3c-2.73 0-5.06 1.66-6 4 .94 2.34 3.27 4 6 4s5.06-1.66 6-4c-.94-2.34-3.27-4-6-4m0 6.5a2.5 2.5 0 0 1-2.5-2.5 2.5 2.5 0 0 1 2.5-2.5 2.5 2.5 0 0 1 2.5 2.5 2.5 2.5 0 0 1-2.5 2.5M9.27 20H6V4h7v5h5v4.07c.7.08 1.36.25 2 .49V8l-6-6H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h4.5a8.15 8.15 0 0 1-1.23-2Z"/></svg>
+    </a>
+  
+
+
+
+<h1 id="pyspark-style-guide-preview">PySpark Style Guide (Preview)</h1>
+<h2 id="introduction">Introduction</h2>
+<p>Idea of this code stype guide is improve consistency of our pipeline development in Foundry. Help teams write readable and maintainable programs using <a href="https://spark.apache.org/docs/latest/api/python/">Apache PySpark</a>.</p>
+<p>This opinionated guide to PySpark code style presents common situations we've encountered and the associated best practices based on the most frequent recurring topics across PySpark repos.</p>
+<p>Beyond PySpark specifics, the general practices of clean code are important in PySpark repositories- the Google <a href="https://github.com/google/styleguide/blob/gh-pages/pyguide.md">PyGuide</a> is a strong starting point for learning more about these practices.</p>
+<p>This pyspark code stype guide is based on <a href="https://github.com/palantir/pyspark-style-guide">palantir/pyspark-style-guide</a>.</p>
+<hr />
+<h2 id="general">General</h2>
+<h3 id="easy-to-read-consistent-explicit">Easy to read, consistent, explicit</h3>
+<h4 id="imports">Imports</h4>
+<p>Import pyspark functions, types, and window narrowly and with consistent aliases.
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="kn">from</span> <span class="nn">pyspark</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># bad</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql.functions</span> <span class="kn">import</span> <span class="o">*</span>
+
+<span class="c1"># good</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">types</span> <span class="k">as</span> <span class="n">T</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">window</span> <span class="k">as</span> <span class="n">W</span>
+<span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">SparkSession</span><span class="p">,</span> <span class="n">DataFrame</span>
+</code></pre></div>
+This prevents name collisions, as many PySpark functions have common names. This will make our code more consistent.</p>
+<h4 id="use-descriptive-names-for-dataframes">Use descriptive names for dataframes</h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="k">def</span> <span class="nf">get_large_downloads</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="k">def</span> <span class="nf">get_large_downloads</span><span class="p">(</span><span class="n">downloads</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">downloads</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;size&quot;</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">100</span><span class="p">)</span>
+</code></pre></div>
+Good naming is common practice for normal Python functions, Finding appropriate names for dataframes makes code easier to understand quickly.</p>
+<h4 id="use-column-name-strings-to-access-columns">Use column name strings to access columns</h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">df</span><span class="o">.</span><span class="n">col_name</span>
+
+
+<span class="c1"># good</span>
+<span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;col_name&quot;</span><span class="p">)</span>
+</code></pre></div>
+Using the dot notation presents several problems. It can lead to name collisions if a column shares a name with a dataframe method. It requires the version of the dataframe with the column you want to access to be bound to a variable, but it may not be. It also doesn't work if the column name contains certain non-letter characters. The most obvious <strong>exception</strong> to this are joins where the joining column has a different name in the two tables.
+<div class="highlight"><pre><span></span><code><span class="c1"># OK</span>
+<span class="n">downloads</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+  <span class="n">users</span><span class="p">,</span> 
+  <span class="n">downloads</span><span class="o">.</span><span class="n">user_id</span> <span class="o">==</span> <span class="n">user</span><span class="o">.</span><span class="n">id</span><span class="p">,</span>
+  <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">,</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<h4 id="when-a-function-accepts-a-column-or-column-name-use-the-column-name-option">When a function accepts a column or column name, use the column name option</h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;client_ip&quot;</span><span class="p">))</span>
+
+
+<span class="c1"># good</span>
+<span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s2">&quot;client_ip&quot;</span><span class="p">)</span>
+</code></pre></div>
+Expressions are easier to read without the extra noise of <code>F.col()</code>.</p>
+<h4 id="when-the-output-of-a-function-is-stored-as-a-column-give-the-column-a-concise-name">When the output of a function is stored as a column, give the column a concise name</h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">logs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+
+<span class="c1"># root</span>
+<span class="c1">#  |-- user_id: string</span>
+<span class="c1">#  |-- count(operation): long</span>
+
+
+<span class="c1"># good</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">logs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;operation_count&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="n">result</span><span class="o">.</span><span class="n">printSchema</span><span class="p">()</span>
+
+<span class="c1"># root</span>
+<span class="c1"># |-- user_id: string</span>
+<span class="c1"># |-- operation_count: long</span>
+</code></pre></div>
+The default column names are usually awkward, probably defy the naming style of other columns, and can get long.</p>
+<h4 id="empty-columns">Empty columns</h4>
+<p>If you need to add an empty column to satisfy a schema, always use <code>F.lit(None)</code> for populating that column. Never use an empty string or some other string signalling an empty value (such as <code>NA</code>).</p>
+<p>Beyond being semantically correct, one practical reason for using <code>F.lit(None)</code> is preserving the ability to use utilities like <code>isNull</code>, instead of having to verify empty strings, nulls, and <code>'NA'</code>, etc.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">))</span>
+
+<span class="c1"># bad</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="s1">&#39;NA&#39;</span><span class="p">))</span>
+
+
+<span class="c1"># good</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">lit</span><span class="p">(</span><span class="kc">None</span><span class="p">))</span>
+</code></pre></div>
+<h4 id="using-comments">Using comments</h4>
+<p>While comments can provide useful insight into code, it is often more valuable to refactor the code to improve its readability. The code should be readable by itself. If you are using comments to explain the logic step by step, you should refactor it.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+
+<span class="c1"># Cast the timestamp columns</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="s1">&#39;delivery_date&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">from_unixtime</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">TimestampType</span><span class="p">()))</span>
+</code></pre></div>
+<p>In the example above, we can see that those columns are getting cast to Timestamp. The comment doesn't add much value. Moreover, a more verbose comment might still be unhelpful if it only
+provides information that already exists in the code. For example:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+
+<span class="c1"># Go through each column, divide by 1000 because millis and cast to timestamp</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="s1">&#39;delivery_date&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">from_unixtime</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">TimestampType</span><span class="p">()))</span>
+</code></pre></div>
+<p>Instead of leaving comments that only describe the logic you wrote, aim to leave comments that give context, that explain the "<em>why</em>" of decisions you made when writing the code. This is particularly important for PySpark, since the reader can understand your code, but often doesn't have context on the data that feeds into your PySpark transform. Small pieces of logic might have involved hours of digging through data to understand the correct behavior, in which case comments explaining the rationale are especially valuable.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># good</span>
+
+<span class="c1"># The consumer of this dataset expects a timestamp instead of a date, and we need</span>
+<span class="c1"># to adjust the time by 1000 because the original datasource is storing these as millis</span>
+<span class="c1"># even though the documentation says it&#39;s actually a date.</span>
+<span class="n">cols</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;start_date&#39;</span><span class="p">,</span> <span class="s1">&#39;delivery_date&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">cols</span><span class="p">:</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">from_unixtime</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">/</span> <span class="mi">1000</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="n">TimestampType</span><span class="p">()))</span>
+</code></pre></div>
+<h3 id="logical-operations">Logical operations</h3>
+<h4 id="refactor-complex-logical-operations">Refactor complex logical operations</h4>
+<p>Logical operations, which often reside inside <code>.filter()</code> or <code>F.when()</code>, need to be readable. We apply the same rule as with chaining functions, keeping logic expressions inside the same code block to <em>three (3) expressions at most</em>. If they grow longer, it is often a sign that the code can be simplified or extracted out. Extracting out complex logical operations into variables makes the code easier to read and reason about, which also reduces bugs.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">F</span><span class="o">.</span><span class="n">when</span><span class="p">(</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;prod_status&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Delivered&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(((</span><span class="n">F</span><span class="o">.</span><span class="n">datediff</span><span class="p">(</span><span class="s1">&#39;deliveryDate_actual&#39;</span><span class="p">,</span> <span class="s1">&#39;current_date&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">((</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;currentRegistration&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">((</span><span class="n">F</span><span class="o">.</span><span class="n">datediff</span><span class="p">(</span><span class="s1">&#39;deliveryDate_actual&#39;</span><span class="p">,</span> <span class="s1">&#39;current_date&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">((</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;originalOperator&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;currentOperator&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)))))),</span> <span class="s1">&#39;In Service&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>The code above can be simplified in different ways. To start, focus on grouping the logic steps in a few named variables. PySpark requires that expressions are wrapped with parentheses. This, mixed with actual parenthesis to group logical operations, can hurt readability. For example the code above has a redundant <code>(F.datediff(df.deliveryDate_actual, df.current_date) &lt; 0)</code> that the original author didn't notice because it's very hard to spot.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># better</span>
+<span class="n">has_operator</span> <span class="o">=</span> <span class="p">((</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;originalOperator&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;currentOperator&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+<span class="n">delivery_date_passed</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">datediff</span><span class="p">(</span><span class="s1">&#39;deliveryDate_actual&#39;</span><span class="p">,</span> <span class="s1">&#39;current_date&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">has_registration</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;currentRegistration&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rlike</span><span class="p">(</span><span class="s1">&#39;.+&#39;</span><span class="p">))</span>
+<span class="n">is_delivered</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;prod_status&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Delivered&#39;</span><span class="p">)</span>
+
+<span class="n">F</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">is_delivered</span> <span class="o">|</span> <span class="p">(</span><span class="n">delivery_date_passed</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">has_registration</span> <span class="o">|</span> <span class="n">has_operator</span><span class="p">)),</span> <span class="s1">&#39;In Service&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>The above example drops the redundant expression and is easier to read. We can improve it further by reducing the number of operations.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># good</span>
+<span class="n">has_operator</span> <span class="o">=</span> <span class="p">((</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;originalOperator&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;currentOperator&#39;</span><span class="p">)</span> <span class="o">!=</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+<span class="n">delivery_date_passed</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">datediff</span><span class="p">(</span><span class="s1">&#39;deliveryDate_actual&#39;</span><span class="p">,</span> <span class="s1">&#39;current_date&#39;</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">has_registration</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;currentRegistration&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rlike</span><span class="p">(</span><span class="s1">&#39;.+&#39;</span><span class="p">))</span>
+<span class="n">is_delivered</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;prod_status&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;Delivered&#39;</span><span class="p">)</span>
+<span class="n">is_active</span> <span class="o">=</span> <span class="p">(</span><span class="n">has_registration</span> <span class="o">|</span> <span class="n">has_operator</span><span class="p">)</span>
+
+<span class="n">F</span><span class="o">.</span><span class="n">when</span><span class="p">(</span><span class="n">is_delivered</span> <span class="o">|</span> <span class="p">(</span><span class="n">delivery_date_passed</span> <span class="o">&amp;</span> <span class="n">is_active</span><span class="p">),</span> <span class="s1">&#39;In Service&#39;</span><span class="p">)</span>
+</code></pre></div>
+<p>Note how the <code>F.when</code> expression is now succinct and readable and the desired behavior is clear to anyone reviewing this code. The reader only needs to visit the individual expressions if they suspect there is an error. It also makes each chunk of logic easy to test if you have unit tests in your code, and want to abstract them as functions.</p>
+<h4 id="factor-out-common-logic">Factor out common logic</h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">csv_downloads_today</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Download&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;today&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;file_extension&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;csv&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="n">exe_downloads_today</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span>
+    <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Download&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;today&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;file_extension&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;exe&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">DOWNLOADED_TODAY</span> <span class="o">=</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Download&quot;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;today&quot;</span><span class="p">)</span>
+<span class="n">csv_downloads_today</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">DOWNLOADED_TODAY</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;file_extension&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;csv&quot;</span><span class="p">))</span>
+<span class="n">exe_downloads_today</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">DOWNLOADED_TODAY</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;file_extension&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;exe&quot;</span><span class="p">))</span>
+</code></pre></div>
+It is okay to reuse these variables even though they include calls to <code>F.col</code>. This prevents repeated code and can make code easier to read.</p>
+<h3 id="about-select-and-withcolumn">About <code>select()</code> and <code>withColumn()</code></h3>
+<h4 id="use-select-statements-to-specify-a-schema-contract">Use <code>select</code> statements to specify a schema contract</h4>
+<p>Doing a select at the beginning of a PySpark transform, or before returning, is considered good practice. This <code>select</code> statement specifies the contract with both the reader and the code about the expected dataframe schema for inputs and outputs. Any select should be seen as a cleaning operation that is preparing the dataframe for consumption by the next step in the transform.</p>
+<p>Keep select statements as simple as possible. Due to common SQL idioms, allow only <em>one</em> function from <code>spark.sql.function</code> to be used per selected column, plus an optional <code>.alias()</code> to give it a meaningful name. Keep in mind that this should be used sparingly. If there are more than <em>three</em> such uses in the same select, refactor it into a separate function like <code>clean_&lt;dataframe name&gt;()</code> to encapsulate the operation.</p>
+<p>Expressions involving more than one dataframe, or conditional operations like <code>.when()</code> are discouraged to be used in a select, unless required for performance reasons.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">aircraft</span> <span class="o">=</span> <span class="n">aircraft</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="s1">&#39;aircraft_id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;aircraft_msn&#39;</span><span class="p">,</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;aircraft_registration&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;aircraft_type&#39;</span><span class="p">,</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">avg</span><span class="p">(</span><span class="s1">&#39;staleness&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;avg_staleness&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;number_of_economy_seats&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">&#39;long&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">avg</span><span class="p">(</span><span class="s1">&#39;flight_hours&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;avg_flight_hours&#39;</span><span class="p">),</span>
+    <span class="s1">&#39;operator_code&#39;</span><span class="p">,</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;number_of_business_seats&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">&#39;long&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Unless order matters to you, try to cluster together operations of the same type.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># good</span>
+<span class="n">aircraft</span> <span class="o">=</span> <span class="n">aircraft</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="s1">&#39;aircraft_id&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;aircraft_msn&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;aircraft_type&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;operator_code&#39;</span><span class="p">,</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;aircraft_registration&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;registration&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;number_of_economy_seats&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">&#39;long&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;number_of_business_seats&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">&#39;long&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">avg</span><span class="p">(</span><span class="s1">&#39;staleness&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;avg_staleness&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">avg</span><span class="p">(</span><span class="s1">&#39;flight_hours&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;avg_flight_hours&#39;</span><span class="p">),</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>The <code>select()</code> statement redefines the schema of a dataframe, so it naturally supports the inclusion or exclusion of columns, old and new, as well as the redefinition of pre-existing ones. By centralising all such operations in a single statement, it becomes much easier to identify the final schema, which makes code more readable. It also makes code more concise.</p>
+<h4 id="instead-of-using-withcolumn-to-redefine-type-cast-in-the-select">Instead of using <code>withColumn()</code> to redefine type, cast in the select:</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">))</span>
+
+
+<span class="c1"># good</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;comments&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">cast</span><span class="p">(</span><span class="s1">&#39;double&#39;</span><span class="p">))</span>
+</code></pre></div>
+<p>But keep it simple:
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="p">((</span><span class="n">F</span><span class="o">.</span><span class="n">coalesce</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">unix_timestamp</span><span class="p">(</span><span class="s1">&#39;closed_at&#39;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">unix_timestamp</span><span class="p">())</span>
+    <span class="o">-</span> <span class="n">F</span><span class="o">.</span><span class="n">unix_timestamp</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">))</span> <span class="o">/</span> <span class="mi">86400</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;days_open&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span>
+    <span class="s1">&#39;days_open&#39;</span><span class="p">,</span>
+    <span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">coalesce</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">unix_timestamp</span><span class="p">(</span><span class="s1">&#39;closed_at&#39;</span><span class="p">),</span> <span class="n">F</span><span class="o">.</span><span class="n">unix_timestamp</span><span class="p">())</span> <span class="o">-</span> <span class="n">F</span><span class="o">.</span><span class="n">unix_timestamp</span><span class="p">(</span><span class="s1">&#39;created_at&#39;</span><span class="p">))</span> <span class="o">/</span> <span class="mi">86400</span>
+<span class="p">)</span>
+</code></pre></div></p>
+<p>Avoid including columns in the select statement if they are going to remain unused and choose instead an explicit set of columns - this is a preferred alternative to using <code>.drop()</code> since it guarantees that schema mutations won't cause unexpected columns to bloat your dataframe. However, dropping columns isn't inherintly discouraged in all cases; for instance- it is commonly appropriate to drop columns after joins since it is common for joins to introduce redundant columns. </p>
+<p>Finally, instead of adding new columns via the select statement, using <code>.withColumn()</code> is recommended instead for single columns. When adding or manipulating tens or hundreds of columns, use a single <code>.select()</code> for performance reasons.</p>
+<h3 id="joins">Joins</h3>
+<h4 id="be-careful-with-joins">Be careful with joins</h4>
+<p>If you perform a left join, and the right side has multiple matches for a key, that row will be duplicated as many times as there are matches. This is called a "join explosion" and can dramatically bloat the output of your transforms job. Always double check your assumptions to see that the key you are joining on is unique, unless you are expecting the multiplication.</p>
+<h4 id="explicitly-specifying-how">Explicitly specifying <code>how</code></h4>
+<p>Bad joins are the source of many tricky-to-debug issues. There are some things that help like specifying the <code>how</code> (and <code>on</code>)explicitly, even if you are using the default value <code>(inner)</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aircraft</span><span class="p">,</span> <span class="s1">&#39;aircraft_id&#39;</span><span class="p">)</span>
+
+<span class="c1"># also bad</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aircraft</span><span class="p">,</span> <span class="s1">&#39;aircraft_id&#39;</span><span class="p">,</span> <span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aircraft</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;aircraft_id&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="use-left_outer-instead-of-left">Use <code>left_outer</code> instead of <code>left</code></h4>
+<p><code>left_outer</code> is more explicit.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aircraft</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;aircraft_id&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left_outer&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aircraft</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;aircraft_id&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left_outer&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="avoid-right_outer-joins">Avoid <code>right_outer</code> joins</h4>
+<p>If you are about to use a <code>right_outer</code> join, switch the order of your dataframes and use a <code>left_outer</code> join instead. It is more intuitive since the dataframe you are doing the operation on is the one that you are centering your join around.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="n">aircraft</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">flights</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;aircraft_id&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;right_outer&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">aircraft</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;aircraft_id&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left_outer&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="avoid-renaming-all-columns-to-avoid-collisions">Avoid renaming all columns to avoid collisions</h4>
+<p>Avoid renaming all columns to avoid collisions. Instead, give an alias to the
+whole dataframe, and use that alias to select which columns you want in the end.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;start_time&#39;</span><span class="p">,</span> <span class="s1">&#39;end_time&#39;</span><span class="p">,</span> <span class="s1">&#39;idle_time&#39;</span><span class="p">,</span> <span class="s1">&#39;total_time&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">columns</span><span class="p">:</span>
+    <span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="s1">&#39;flights_&#39;</span> <span class="o">+</span> <span class="n">col</span><span class="p">)</span>
+    <span class="n">parking</span> <span class="o">=</span> <span class="n">parking</span><span class="o">.</span><span class="n">withColumnRenamed</span><span class="p">(</span><span class="n">col</span><span class="p">,</span> <span class="s1">&#39;parking_&#39;</span> <span class="o">+</span> <span class="n">col</span><span class="p">)</span>
+
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parking</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;flight_code&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left_outer&#39;</span><span class="p">)</span>
+
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;flights_start_time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;flight_start_time&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;flights_end_time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;flight_end_time&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;parking_total_time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;client_parking_total_time&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;flights&#39;</span><span class="p">)</span>
+<span class="n">parking</span> <span class="o">=</span> <span class="n">parking</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;parking&#39;</span><span class="p">)</span>
+
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">parking</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;flight_code&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left_outer&#39;</span><span class="p">)</span>
+
+<span class="n">flights</span> <span class="o">=</span> <span class="n">flights</span><span class="o">.</span><span class="n">select</span><span class="p">(</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;flights.start_time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;flight_start_time&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;flights.end_time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;flight_end_time&#39;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;parking.total_time&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;client_parking_total_time&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>In such cases, keep in mind:</p>
+<ol>
+<li>It's probably best to drop overlapping columns <em>prior</em> to joining if you don't need both;</li>
+<li>In case you do need both, it might be best to rename one of them prior to joining;</li>
+<li>You should always resolve ambiguous columns before outputting a dataset. After the transform is finished running you can no longer distinguish them.</li>
+</ol>
+<h4 id="dont-use-dropduplicates-or-distinct-as-a-crutch">Don't use <code>.dropDuplicates()</code> or <code>.distinct()</code> as a crutch</h4>
+<p>As a last word about joins, don't use <code>.dropDuplicates()</code> or <code>.distinct()</code> as a crutch.<br />
+ If unexpected duplicate rows are observed, there's almost always an underlying reason for why those duplicate rows appear. Adding <code>.dropDuplicates()</code> only masks this problem and adds overhead to the runtime.</p>
+<h3 id="window-functions">Window Functions</h3>
+<p>Always specify an explicit frame when using window functions, using either <a href="https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/expressions/WindowSpec.html#rowsBetween-long-long-">row frames</a> or <a href="https://spark.apache.org/docs/latest/api/java/org/apache/spark/sql/expressions/WindowSpec.html#rangeBetween-long-long-">range frames</a>. If you do not specify a frame, Spark will generate one, in a way that might not be easy to predict. In particular, the generated frame will change depending on whether the window is ordered (see <a href="https://github.com/apache/spark/blob/v3.0.1/sql/catalyst/src/main/scala/org/apache/spark/sql/catalyst/analysis/Analyzer.scala#L2899">here</a>). To see how this can be confusing, consider the following example:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">pyspark.sql</span> <span class="kn">import</span> <span class="n">functions</span> <span class="k">as</span> <span class="n">F</span><span class="p">,</span> <span class="n">Window</span> <span class="k">as</span> <span class="n">W</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">spark</span><span class="o">.</span><span class="n">createDataFrame</span><span class="p">([(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">)],</span> <span class="p">[</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="s1">&#39;num&#39;</span><span class="p">])</span>
+
+<span class="c1"># bad</span>
+<span class="n">w1</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span>
+<span class="n">w2</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w1</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="c1"># =&gt; [Row(key=&#39;a&#39;, sum=10), Row(key=&#39;a&#39;, sum=10), Row(key=&#39;a&#39;, sum=10), Row(key=&#39;a&#39;, sum=10)]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="c1"># =&gt; [Row(key=&#39;a&#39;, sum=1), Row(key=&#39;a&#39;, sum=3), Row(key=&#39;a&#39;, sum=6), Row(key=&#39;a&#39;, sum=10)]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="c1"># =&gt; [Row(key=&#39;a&#39;, first=1), Row(key=&#39;a&#39;, first=1), Row(key=&#39;a&#39;, first=1), Row(key=&#39;a&#39;, first=1)]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w2</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;last&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="c1"># =&gt; [Row(key=&#39;a&#39;, last=1), Row(key=&#39;a&#39;, last=2), Row(key=&#39;a&#39;, last=3), Row(key=&#39;a&#39;, last=4)]</span>
+</code></pre></div>
+<p>It is much safer to always specify an explicit frame:
+<div class="highlight"><pre><span></span><code><span class="c1"># good</span>
+<span class="n">w3</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rowsBetween</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">unboundedPreceding</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">w4</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">orderBy</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">rowsBetween</span><span class="p">(</span><span class="n">W</span><span class="o">.</span><span class="n">unboundedPreceding</span><span class="p">,</span> <span class="n">W</span><span class="o">.</span><span class="n">unboundedFollowing</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w3</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="c1"># =&gt; [Row(key=&#39;a&#39;, sum=1), Row(key=&#39;a&#39;, sum=3), Row(key=&#39;a&#39;, sum=6), Row(key=&#39;a&#39;, sum=10)]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w4</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="c1"># =&gt; [Row(key=&#39;a&#39;, sum=10), Row(key=&#39;a&#39;, sum=10), Row(key=&#39;a&#39;, sum=10), Row(key=&#39;a&#39;, sum=10)]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">first</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w4</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;first&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="c1"># =&gt; [Row(key=&#39;a&#39;, first=1), Row(key=&#39;a&#39;, first=1), Row(key=&#39;a&#39;, first=1), Row(key=&#39;a&#39;, first=1)]</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">last</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w4</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;last&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">collect</span><span class="p">()</span>
+<span class="c1"># =&gt; [Row(key=&#39;a&#39;, last=4), Row(key=&#39;a&#39;, last=4), Row(key=&#39;a&#39;, last=4), Row(key=&#39;a&#39;, last=4)]</span>
+</code></pre></div></p>
+<h4 id="prefer-use-of-window-functions-to-equivalent-re-joining-operations">Prefer use of window functions to equivalent re-joining operations</h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">downloads</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+    <span class="n">downloads</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;download_count&quot;</span><span class="p">)),</span> <span class="s2">&quot;user_id&quot;</span>
+<span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">window</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">Window</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">))</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">downloads</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s2">&quot;download_count&quot;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">window</span><span class="p">))</span>
+</code></pre></div>
+The window function version is usually easier to get right and is usually more concise.</p>
+<h4 id="avoid-empty-partitionby">Avoid empty <code>partitionBy()</code></h4>
+<p>Spark window functions can be applied over all rows, using a global frame. This is accomplished by specifying zero columns in the partition by expression (i.e. <code>W.partitionBy()</code>).</p>
+<p>Code like this should be avoided, as it forces Spark to combine all data into a single partition, which can be extremely harmful for performance.</p>
+<p>Prefer to use aggregations whenever possible:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">w</span> <span class="o">=</span> <span class="n">W</span><span class="o">.</span><span class="n">partitionBy</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">over</span><span class="p">(</span><span class="n">w</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span>
+
+<span class="c1"># good</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="s1">&#39;num&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s1">&#39;sum&#39;</span><span class="p">))</span>
+</code></pre></div>
+<h3 id="udfs-user-defined-functions">UDFs (user defined functions)</h3>
+<p>It is highly recommended to avoid UDFs in all situations, as they are dramatically less performant than native PySpark. In most situations, logic that seems to necessitate a UDF can be refactored to use only native PySpark functions.</p>
+<h3 id="chaining-of-expressions">Chaining of expressions</h3>
+<p>Keep in mind chaining expressions is a contentious topic. Feedback from team members are important !</p>
+<h4 id="avoid-chaining-of-expressions-into-multi-line-expressions-with-different-types">Avoid chaining of expressions into multi-line expressions with different types</h4>
+<p>particularly if they have different behaviours or contexts. For example- mixing column creation or joining with selecting and filtering.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;truthiness&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;boverc&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">))</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left_outer&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="c1"># better (seperating into steps)</span>
+<span class="c1"># first: we select and trim down the data that we need</span>
+<span class="c1"># second: we create the columns that we need to have</span>
+<span class="c1"># third: joining with other dataframes</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;truthiness&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">withColumn</span><span class="p">(</span><span class="s1">&#39;boverc&#39;</span><span class="p">,</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;b&#39;</span><span class="p">)</span> <span class="o">/</span> <span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">))</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df2</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">df3</span><span class="p">,</span> <span class="s1">&#39;key&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;left_outer&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<p>Having each group of expressions isolated into its own logical code block improves legibility and makes it easier to find relevant logic.
+For example, a reader of the code below will probably jump to where they see dataframes being assigned <code>df = df...</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">123</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">another_table</span><span class="p">,</span> <span class="s1">&#39;some_field&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+
+
+<span class="c1"># better</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s1">&#39;foo&#39;</span><span class="p">,</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="s1">&#39;foobar&#39;</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;abc&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="mi">123</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">another_table</span><span class="p">,</span> <span class="n">on</span><span class="o">=</span><span class="s1">&#39;some_field&#39;</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s1">&#39;inner&#39;</span><span class="p">)</span>
+</code></pre></div>
+<h4 id="multi-line-expressions">Multi-line expressions</h4>
+<p>To keep things consistent, please wrap the entire expression into a single parenthesis block, and avoid using <code>\</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;executing&#39;</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;has_tests&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span>\
+    <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;has_tests&#39;</span><span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">df</span> <span class="o">=</span> <span class="p">(</span>
+  <span class="n">df</span>
+  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;event&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;executing&#39;</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">filter</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s1">&#39;has_tests&#39;</span><span class="p">)</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span>
+  <span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="s1">&#39;has_tests&#39;</span><span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h4 id="when-chaining-several-functions-open-a-cleanly-indentable-block-using-parentheses">When chaining several functions, open a cleanly indentable block using parentheses</h4>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+<span class="n">result</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">,</span> <span class="s2">&quot;operation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s2">&quot;creation_time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;start_time&quot;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s2">&quot;creation_time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;end_time&quot;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s2">&quot;client_ip&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;ips&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">result</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">,</span> <span class="s2">&quot;operation&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">min</span><span class="p">(</span><span class="s2">&quot;creation_time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;start_time&quot;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">max</span><span class="p">(</span><span class="s2">&quot;creation_time&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;end_time&quot;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s2">&quot;client_ip&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;ips&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+<h4 id="try-to-break-the-query-into-reasonably-sized-named-chunks">Try to break the query into reasonably sized named chunks</h4>
+<p><div class="highlight"><pre><span></span><code><span class="c1"># bad (logical chunk not broken out)</span>
+<span class="n">downloading_user_operations</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">logs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span>
+        <span class="p">(</span><span class="n">logs</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Download&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()),</span> <span class="s2">&quot;user_id&quot;</span>
+    <span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;operations_used&quot;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;operation_count&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+
+<span class="c1"># bad (chunks too small)</span>
+<span class="n">download_logs</span> <span class="o">=</span> <span class="n">logs</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Download&quot;</span><span class="p">)</span>
+
+<span class="n">downloading_users</span> <span class="o">=</span> <span class="n">download_logs</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+
+<span class="n">downloading_user_logs</span> <span class="o">=</span> <span class="n">logs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">downloading_users</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">)</span>
+
+<span class="n">downloading_user_operations</span> <span class="o">=</span> <span class="n">downloading_user_logs</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;operations_used&quot;</span><span class="p">),</span>
+    <span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;operation_count&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="n">downloading_users</span> <span class="o">=</span> <span class="n">logs</span><span class="o">.</span><span class="n">where</span><span class="p">(</span><span class="n">F</span><span class="o">.</span><span class="n">col</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span> <span class="o">==</span> <span class="s2">&quot;Download&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">distinct</span><span class="p">()</span>
+
+<span class="n">downloading_user_operations</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">logs</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">downloading_users</span><span class="p">,</span> <span class="s2">&quot;user_id&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">agg</span><span class="p">(</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">collect_set</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;operations_used&quot;</span><span class="p">),</span>
+        <span class="n">F</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;operation&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">alias</span><span class="p">(</span><span class="s2">&quot;operation_count&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="p">)</span>
+</code></pre></div>
+Choosing when and what to name variables is always a challenge. Resisting the urge to create long PySpark function chains makes the code more readable.</p>
+<hr />
+<h2 id="foundry-specific">Foundry specific</h2>
+<p>Please see <strong><a href="https://shiftup.sharepoint.com/:o:/s/ictdata/Eook6G1NJD9KgsArYgDVSsQBddjDgaTU43SZ08Qyhi4IiA">Foundry tech kit</a></strong> for other development guides.</p>
+<h3 id="dont-repeat-yourself">Don't repeat yourself</h3>
+<p>Don't repeat yourself with TO_RENAME and COLS_TO_KEEP and <strong>rename only used columns</strong>.
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">transforms.api</span> <span class="kn">import</span> <span class="n">transform_df</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Output</span>
+<span class="kn">from</span> <span class="nn">dataframe.transformer</span> <span class="kn">import</span> <span class="n">rename_columns</span>
+
+<span class="c1"># bad</span>
+<span class="n">TO_RENAME</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;no_das&quot;</span><span class="p">:</span> <span class="s2">&quot;did_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;no_dossier&quot;</span><span class="p">:</span> <span class="s2">&quot;depil_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;date_creation&quot;</span><span class="p">:</span> <span class="s2">&quot;creation_date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;date_modification&quot;</span><span class="p">:</span> <span class="s2">&quot;modification_date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;date_suppression&quot;</span><span class="p">:</span> <span class="s2">&quot;deletion_date&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;user_maj&quot;</span><span class="p">:</span> <span class="s2">&quot;update_user&quot;</span>
+<span class="p">}</span>
+<span class="n">COLS_TO_KEEP</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;did_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;depil_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;creation_date&quot;</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="nd">@transform_df</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s2">&quot;Users/data/output&quot;</span><span class="p">),</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;Users/data/input&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_compute_function</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">rename_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">TO_RENAME</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">*</span><span class="n">COLS_TO_KEEP</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">df</span>
+
+
+<span class="c1"># good</span>
+<span class="n">COLS_TO_KEEP</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;no_das&quot;</span><span class="p">:</span> <span class="s2">&quot;did_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;no_dossier&quot;</span><span class="p">:</span> <span class="s2">&quot;depil_id&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;date_creation&quot;</span><span class="p">:</span> <span class="s2">&quot;creation_date&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+
+<span class="nd">@transform_df</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s2">&quot;Users/data/output&quot;</span><span class="p">),</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;Users/data/input&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_compute_function</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+
+    <span class="n">df</span> <span class="o">=</span> <span class="n">rename_columns</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">COLS_TO_KEEP</span><span class="p">)</span>
+    <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="o">*</span><span class="nb">list</span><span class="p">(</span><span class="n">COLS_TO_KEEP</span><span class="o">.</span><span class="n">values</span><span class="p">()))</span>
+    <span class="k">return</span> <span class="n">df</span>
+</code></pre></div></p>
+<h3 id="use-check-and-expectations-to-explicit-explain-expected-output-and-input">Use Check and expectations to explicit explain expected Output and Input</h3>
+<p>please see details in <a href="https://bole.palantirfoundry.fr/workspace/documentation/product/transforms/data-expectations-quick-start">Foundry documentation</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span> <span class="nn">transforms.api</span> <span class="kn">import</span> <span class="n">transform_df</span><span class="p">,</span> <span class="n">Input</span><span class="p">,</span> <span class="n">Output</span><span class="p">,</span> <span class="n">Check</span>
+<span class="kn">from</span> <span class="nn">transforms</span> <span class="kn">import</span> <span class="n">expectations</span> <span class="k">as</span> <span class="n">E</span>
+<span class="kn">from</span> <span class="nn">dataframe.transformer</span> <span class="kn">import</span> <span class="n">get_first_over_window</span>
+
+<span class="c1"># bad</span>
+<span class="nd">@transform_df</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s2">&quot;Users/data/output&quot;</span><span class="p">),</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;Users/data/input&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_compute_function</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">get_first_over_window</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="s2">&quot;date_maj&quot;</span><span class="p">,</span> <span class="n">ascOrder</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+
+<span class="c1"># good</span>
+<span class="nd">@transform_df</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span>
+        <span class="s2">&quot;Users/data/output&quot;</span><span class="p">,</span>
+        <span class="n">checks</span><span class="o">=</span><span class="n">Check</span><span class="p">(</span><span class="n">E</span><span class="o">.</span><span class="n">primary_key</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span> <span class="s1">&#39;Primary Key&#39;</span><span class="p">,</span> <span class="n">on_error</span><span class="o">=</span><span class="s1">&#39;FAIL&#39;</span><span class="p">),</span>
+    <span class="p">),</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;Users/data/input&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_compute_function</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">get_first_over_window</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">],</span> <span class="s2">&quot;date_maj&quot;</span><span class="p">,</span> <span class="n">ascOrder</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="add-require_incrementaltrue-if-you-are-expecting-an-incremental-build">Add <code>require_incremental=True</code> if you are expecting an incremental build</h3>
+<p>To avoid unexpected snapshot buill create un-wanted data, please add <code>require_incremental=True</code> if you are expecting an incremental build.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># bad</span>
+
+<span class="c1"># BUMPING THE SEMANTIC_VERSION WILL CAUSE ALL HISTORY TO BE LOST</span>
+<span class="nd">@incremental</span><span class="p">(</span>
+    <span class="n">semantic_version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+<span class="p">)</span>
+<span class="nd">@transform</span><span class="p">(</span>
+    <span class="n">out</span><span class="o">=</span><span class="n">Output</span><span class="p">(</span><span class="s2">&quot;Users/data/output&quot;</span><span class="p">),</span>
+    <span class="n">raw</span><span class="o">=</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;Users/data/input&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_compute_function</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
+    <span class="o">...</span>
+
+
+<span class="c1"># good</span>
+
+<span class="c1"># BUMPING THE SEMANTIC_VERSION WILL CAUSE ALL HISTORY TO BE LOST</span>
+<span class="nd">@incremental</span><span class="p">(</span>
+    <span class="n">semantic_version</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span>
+    <span class="n">require_incremental</span><span class="o">=</span><span class="kc">True</span>  <span class="c1"># if it is not incremental it will fails</span>
+<span class="p">)</span>
+<span class="nd">@transform</span><span class="p">(</span>
+    <span class="n">out</span><span class="o">=</span><span class="n">Output</span><span class="p">(</span><span class="s2">&quot;Users/data/output&quot;</span><span class="p">),</span>
+    <span class="n">raw</span><span class="o">=</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;Users/data/input&quot;</span><span class="p">),</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_compute_function</span><span class="p">(</span><span class="n">ctx</span><span class="p">,</span> <span class="n">out</span><span class="p">,</span> <span class="n">raw</span><span class="p">):</span>
+    <span class="o">...</span>
+</code></pre></div>
+<h3 id="optimization-through-repartitioning">Optimization through (Re)partitioning</h3>
+<p>please see details in <a href="https://bole.palantirfoundry.fr/workspace/documentation/product/foundry-training-portal/de_spark-optimization_module4">Foundry documentation</a></p>
+<p>Partition is the elementary entity on which Spark can execute computation. <strong>Spark cannot parallelize computation inside one partition</strong>(you need at leaset 2 partitions). The process of tuning number of dataset partitions is called “partitioning” or “re-partitioning.” 
+As a general rule, you should aim for a ratio of approximately one partition for every <strong>128MB</strong> of your dataset.</p>
+<div class="highlight"><pre><span></span><code><span class="c1">#bad</span>
+<span class="nd">@transform_df</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s2">&quot;Users/data/output&quot;</span><span class="p">),</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;Users/data/input&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_compute_function</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">df</span>    <span class="c1"># by default it is df.repartition(4), this might not be optimized</span>
+
+
+
+<span class="c1">#good</span>
+<span class="nd">@transform_df</span><span class="p">(</span>
+    <span class="n">Output</span><span class="p">(</span><span class="s2">&quot;Users/data/output&quot;</span><span class="p">),</span>
+    <span class="n">df</span><span class="o">=</span><span class="n">Input</span><span class="p">(</span><span class="s2">&quot;Users/data/input&quot;</span><span class="p">)</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">my_compute_function</span><span class="p">(</span><span class="n">df</span><span class="p">):</span>
+    <span class="c1"># calculate number of partitions following the rule mentioned above, sometimes you might want call df.coalesce</span>
+    <span class="k">return</span> <span class="n">df</span><span class="o">.</span><span class="n">repartition</span><span class="p">(</span><span class="n">calculated_number</span><span class="p">)</span>   
+</code></pre></div>
+<h2 id="other-considerations-and-recommendations">Other Considerations and Recommendations</h2>
+<ol>
+<li>Be wary of functions that grow too large. As a general rule, a file
+    should not be over 250 lines, and a function should not be over 70 lines.</li>
+<li>Try to keep your code in logical blocks. For example, if you have
+    multiple lines referencing the same things, try to keep them
+    together. Separating them reduces context and readability.</li>
+<li>Test your code! If you <em>can</em> run the local tests, do so and make
+    sure that your new code is covered by the tests. If you can't run
+    the local tests, build the datasets on your branch and manually
+    verify that the data looks as expected.</li>
+<li>Avoid <code>.otherwise(value)</code> as a general fallback. If you are mapping
+    a list of keys to a list of values and a number of unknown keys appear,
+    using <code>otherwise</code> will mask all of these into one value.</li>
+<li>Do not keep commented out code checked in the repository. This applies
+    to single line of codes, functions, classes or modules. Rely on git
+    and its capabilities of branching or looking at history instead.</li>
+<li>When encountering a large single transformation composed of integrating multiple different source tables, split it into the natural sub-steps and extract the logic to functions. This allows for easier higher level readability and allows for code re-usability and consistency between transforms.</li>
+<li>Try to be as explicit and descriptive as possible when naming functions
+    or variables. Strive to capture what the function is actually doing
+    as opposed to naming it based the objects used inside of it.</li>
+<li>Avoid using literal strings or integers in filtering conditions, new
+    values of columns etc. Instead, to capture their meaning, extract them into variables, constants,
+    dicts or classes as suitable. This makes the
+    code more readable and enforces consistency across the repository.</li>
+</ol>
+<hr />
+<h2 id="contributing">Contributing</h2>
+<p>One of the main purposes of this document is to encourage consistency. Some choices made here are arbitrary, but we hope they will lead to more readable code. Other choices may prove wrong with more time and experience. Suggestions for changes to the guide or additions to it are welcome. Please feel free to create an issue or pull request or chat directly in teams to start a discussion.</p>
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <a href="#" class="md-top md-icon" data-md-component="top" hidden>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+            Back to top
+          </a>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs", "navigation.top", "content.action.edit", "content.action.view", "content.code.annotate", "content.code.copy"], "search": "../../assets/javascripts/workers/search.db81ec45.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.6df46069.min.js"></script>
+      
+    
+  </body>
+</html>
