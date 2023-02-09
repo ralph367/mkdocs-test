@@ -363,7 +363,6 @@ classDiagram
 ```
 ````
 
-<div class="result" markdown>
 
 ``` mermaid
 classDiagram
@@ -393,6 +392,4 @@ classDiagram
     +outputAsLabel()  
   }
 ```
-
-</div>
 
