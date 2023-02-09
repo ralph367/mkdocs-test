@@ -735,13 +735,14 @@ def my_compute_function(ctx, out, raw):
 
 
 ### Optimization through (Re)partitioning
+
 please see details in [Foundry documentation](https://bole.palantirfoundry.fr/workspace/documentation/product/foundry-training-portal/de_spark-optimization_module4)
 
 Partition is the elementary entity on which Spark can execute computation. **Spark cannot parallelize computation inside one partition**(you need at leaset 2 partitions). The process of tuning number of dataset partitions is called “partitioning” or “re-partitioning.” 
-> As a general rule, you should aim for a ratio of approximately one partition for every **128MB** of your dataset.
+As a general rule, you should aim for a ratio of approximately one partition for every **128MB** of your dataset.
 
 ````python
-# bad
+#bad
 @transform_df(
     Output("Users/data/output"),
     df=Input("Users/data/input")
@@ -751,7 +752,7 @@ def my_compute_function(df):
 
 
 
-# good
+#good
 @transform_df(
     Output("Users/data/output"),
     df=Input("Users/data/input")
@@ -761,7 +762,8 @@ def my_compute_function(df):
     return df.repartition(calculated_number)   
 
 ````
----
+
+
 ## Other Considerations and Recommendations
 
 1. Be wary of functions that grow too large. As a general rule, a file
