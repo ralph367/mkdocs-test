@@ -29,10 +29,39 @@ search:
 ...
 ```
 
+## Tip
+
+```
+!!! tip "Title"
+
+    Text...
+```
+
+!!! tip "Title"
+
+    Text...
+    
+    
 ## Warning
 
-!!! tip "Automatically bundle Google Fonts"
 
-    The [built-in privacy plugin] makes it easy to use Google Fonts
-    while complying with the __General Data Protection Regulation__ (GDPR),
-    by automatically downloading and self-hosting the web font files.
+```
+!!! warning "Title"
+
+    Text...
+```
+!!! warning "Title"
+
+    Text...
+    
+       
+## Note
+
+```
+!!! note "Title"
+
+    Text...
+```
+!!! note "Title"
+
+    Text...
