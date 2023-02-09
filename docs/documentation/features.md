@@ -65,3 +65,18 @@ search:
 !!! note "Title"
 
     Text...
+    
+## Collapsible blocks
+
+Can be used for note, tip, warning
+
+```
+??? note
+
+    Test...
+```
+
+??? note
+
+    Test...
+
