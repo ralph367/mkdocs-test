@@ -326,11 +326,7 @@ tags on separate lines and adding new lines between the tags and the content.
 ## Diagram
 
 There are several diagrams but here is one example, to check all the others check it [here](https://squidfunk.github.io/mkdocs-material/reference/diagrams/)
-### Using class diagrams
 
-[Class diagrams] are central to object oriented programing, describing the
-structure of a system by modelling entities as classes and relationships between
-them:
 
 ```` markdown title="Class diagram"
 ``` mermaid
